@@ -105,6 +105,9 @@ static const Key keys[] = {
 	{ 0, XF86XK_AudioMicMute,       spawn,                     {.v = mutemiccmd } },
 	{ 0, XF86XK_MonBrightnessUp,    spawn,                     {.v = raisebacklightcmd } },
 	{ 0, XF86XK_MonBrightnessDown,  spawn,                     {.v = lowerbacklightcmd } },
+	{ 0,                            XK_Print,  spawn,          SHCMD("maim -u | xclip -selection clipboard -t image/png -i") },
+	{ Mod1Mask,                     XK_Print,  spawn,          SHCMD("maim -u --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png -i") },
+	{ Mod1Mask|ShiftMask,           XK_Print,  spawn,          SHCMD("sleep 0.2s; maim -s -u | xclip -selection clipboard -t image/png -i") }
 };
 
 /* button definitions */
